@@ -1,7 +1,7 @@
 <?php
 require_once 'connection.php';
 $database = connectionToDatabase();
-$query = 'SELECT `title`, `performer`, `date`, `startTime` FROM `shows` ORDER BY `title` ASC';
+$query = 'SELECT `title`, `performer`, DATE_FORMAT(`date`,\'%d-%m-%Y\') `date`, `startTime` FROM `shows` ORDER BY `title` ASC';
 $showListQuery = $database->query($query);
 $showList = $showListQuery->fetchAll(PDO::FETCH_ASSOC);
 foreach ($showList as $show){ ?>
